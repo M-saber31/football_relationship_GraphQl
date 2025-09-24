@@ -1,0 +1,35 @@
+type Player {
+  name: String!
+  clubs: [ClubPeriod!]!         # clubs this player has played for, with seasons
+  teammates: [TeammateHistory!]! # teammates grouped with overlap details
+}
+
+type Club {
+  name: String!
+  players: [Player!]!           # all players who played at this club
+}
+
+# Stores when a player was at a specific club
+type ClubPeriod {
+  club: Club!
+  seasons: [String!]!           # e.g. ["2002-2003", "2006-2007"]
+}
+
+# Groups all overlaps with a teammate across clubs
+type TeammateHistory {
+  player: Player!               # the teammate
+  clubs: [ClubOverlap!]!        # all clubs where they overlapped
+}
+
+# Stores a specific club overlap between two players
+type ClubOverlap {
+  club: Club!
+  seasons: [String!]!           # overlap seasons at this club
+  withPlayers: [Player!]!   # <-- NEW: which of the input players overlapped
+}
+
+type Query {
+  player(name: String!): Player                         # fetch a player with all details
+  teammates(name: String!, sortBy: String, club: String): [TeammateHistory!]!         # fetch grouped teammates
+  commonTeammates(players: [String!]!): [TeammateHistory!]! # teammates common to multiple players
+}
