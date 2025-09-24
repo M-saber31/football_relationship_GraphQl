@@ -145,4 +145,15 @@ schema = make_executable_schema(type_defs, query)
 
 # FastAPI app
 app = FastAPI()
+
+@app.get("/ping")
+def health_check():
+    try:
+        with driver.session() as session:
+            session.run("RETURN 1")
+        return {"status": "ok", "db": "connected"}
+    except Exception as e:
+        return {"status": "error", "db": str(e)}
+
+
 app.mount("/graphql", GraphQL(schema, debug=True))
