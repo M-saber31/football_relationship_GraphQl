@@ -10,9 +10,9 @@ type_defs = gql(open("schema.graphql").read())
 query = QueryType()
 
 # --- Neo4j Connection from Environment Variables ---
-NEO4J_URI = os.getenv("NEO4J_URI", "neo4j+ssc://eac4c1bd.databases.neo4j.io")
-NEO4J_USER = os.getenv("NEO4J_USER", "eac4c1bd")
-NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "9DwmpKLb6pndRs0fjsFQ2a3-9Z1mXGSPFVrDrNDxIiE")
+NEO4J_URI = os.getenv("NEO4J_URI", "neo4j+ssc://43be5da7.databases.neo4j.io")
+NEO4J_USER = os.getenv("NEO4J_USER", "43be5da7")
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "vaguOzp9nJdSR_P_XUO3N05Ut0-SToIj8H0ZKaIXjiU")
 
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
 
