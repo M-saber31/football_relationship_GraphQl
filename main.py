@@ -11,7 +11,7 @@ query = QueryType()
 
 # --- Neo4j Connection from Environment Variables ---
 NEO4J_URI = os.getenv("NEO4J_URI", "neo4j+ssc://43be5da7.databases.neo4j.io")
-NEO4J_USER = os.getenv("NEO4J_USER", "43be5da7")
+NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "vaguOzp9nJdSR_P_XUO3N05Ut0-SToIj8H0ZKaIXjiU")
 
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
